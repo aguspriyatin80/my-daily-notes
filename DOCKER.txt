@@ -1,0 +1,70 @@
+####
+# This Dockerfile is used in order to build a container that runs the Quarkus application in JVM mode
+#
+# Before building the docker image run:
+#
+# mvn package
+#
+# Then, build the image with:
+#
+# docker build -f src/main/docker/Dockerfile.jvm -t quarkus/quarkusproject-jvm .
+#
+# Then run the container using:
+#
+# docker run -i --rm -p 8080:8080 quarkus/quarkusproject-jvm
+#
+
+mvn package
+docker build -f src/main/docker/Dockerfile.jvm -t quarkus/quarkusproject-jvm:myquarkusapp .
+docker image ls
+docker run -i --rm -p 8080:8080 quarkus/quarkusproject-jvm:myquarkusapp
+docker push quarkus/quarkusproject-jvm:myquarkusapp
+docker image ls
+docker image prune --all
+docker image ls
+docker run -i --rm -p 8080:8080 quarkus/quarkusproject-jvm:myquarkusapp
+
+
+1) buat konfigurasi file docker-compose.yaml contohnya sbb:
+
+version: "3.8"
+
+services:
+  nginx-example1:
+    container_name: nginx-example1
+    image: nginx-latest
+  nginx-example2:
+    container_name: nginx-example2
+    image: nginx-latest
+
+2) membuat containernya, dengan perintah:
+docker compose create
+
+3) mengecek apakah sudah ada container yang sudah running:
+docker container ls
+
+4) mengecek semua container baik yang sedang running atau tidak
+docker container ls -a
+docker container ls -a | grep nginx (lebih spesifik dengan nama nginx)
+
+5) menjalankan container yang sudah dibuat:
+docker compose start
+
+6) melihat container yang hanya terdapat di konfigurasi file docker-compose:
+docker compose ps
+
+7) menjalankan docker container sesuai dengan namanya
+docker container start mongo
+
+8) menghentikan container yang ada di file konfigurasi tetapi tidak menghapus
+docker compose stop
+
+9) menghentikan container yang sedang berjalan sekaligus menghapusnya
+docker compose down
+
+10) membuat container sekaligus menjalankannya
+docker compose up -d
+
+
+
+

@@ -1,0 +1,34 @@
+curl -sL --http1.1 https://cnfl.io/cli | sh -s -- latest
+confluent login --save
+confluent environment list
+confluent environment use env-xqnnrk
+confluent kafka cluster list
+confluent kafka cluster use lkc-7yv172
+confluent api-key create --resource lkc-7yv172
+confluent api-key use 77FA2ZIWZ2WVY66C --resource lkc-7yv172
+
+===
+confluent kafka topic list
+confluent kafka topic consume --from-beginning poems
+
+===
+confluent kafka topic produce poems --parse-key
+5: pesan selanjutnya
+
+confluent kafka topic describe poems
+
+confluent kafka topic create  --partitions 1 poems_1
+confluent kafka topic create  --partitions 4 poems_4
+
+confluent kafka topic describe poems_1
+
+confluent kafka topic produce poems_1 --parse-key
+1: pesan pertama dari poems_1
+2: pesan kedua dari poems_1
+
+confluent kafka topic consume --from-beginning poems_1
+
+
+
+
+
