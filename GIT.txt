@@ -200,3 +200,5 @@ PS D:\agus-priyatin\mandala-new\collection-microservice>
 #membatalkan commit terakhir tetapi belum dipush ke remote (masih di staging area), sehingga akan dikembalikan ke local
 git reset HEAD~
 
+git reset --hard 
+git branch --set-upstream-to=origin/aguspriyatin/task/1159 aguspriyatin/task/1159
