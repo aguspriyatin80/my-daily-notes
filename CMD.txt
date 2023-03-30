@@ -1,0 +1,7 @@
+Task Kill By PID
+
+C:\> netstat -ano | findstr :port
+
+C:\> taskkill /F /PID process_id
+
+
